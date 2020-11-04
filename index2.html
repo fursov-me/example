@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean JavaScript</title>
+  </head>
+  <body>
+    <ul id="array-rendering"></ul>
+
+    <script>
+      let items = [
+        { message: "Omsk" },
+        { message: "Moscow" },
+        { message: "Saint Petersburg" },
+      ];
+
+      for (i in items) {
+        var li = document.createElement("LI");
+        var node = document.createTextNode(items[i].message);
+        li.appendChild(node);
+        document.getElementById("array-rendering").appendChild(li);
+      }
+    </script>
+  </body>
+</html>
