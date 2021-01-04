@@ -3,26 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue framework</title>
-    <script src="//unpkg.com/vue@next"></script>
+    <title>Vue 3</title>
   </head>
   <body>
-    <ul id="array-rendering">
-      <li v-for="item in items">{{ item.message }}</li>
-    </ul>
+
+    <div id="app">
+
+      <ul>
+        <li v-for="(note, id) in notes">
+          {{ note }}
+        <button v-on:click="removeNote(id)">del</button>
+        </li>
+      </ul>
+
+      <input type="text" v-bind:placeholder="placeholder" v-bind:value="inputValue" v-on:input="inputChangeHandler" v-on:keypress.enter="addNewNote">
+      <button v-on:click="addNewNote">Add</button>
+
+    </div>
+
+    <script src="//unpkg.com/vue@next"></script>
 
     <script>
-      Vue.createApp({
+      const App = {
         data() {
           return {
-            items: [
-              { message: "Omsk" },
-              { message: "Moscow" },
-              { message: "Saint Petersburg" },
-            ],
-          };
+            notes: ["Omsk", "Moscow", "Saint Petersburg"],
+            placeholder: 'Enter your city'
+          }
         },
-      }).mount("#array-rendering");
+        methods:{
+          inputChangeHandler(){
+            this.inputValue = event.target.value
+          },
+          addNewNote() {
+            this.notes.push(this.inputValue)
+            this.inputValue = ''
+          },
+          removeNote(id){
+            this.notes.splice(id,1)
+          }
+        }
+      }
+      Vue.createApp(App).mount("#app")
     </script>
+
   </body>
 </html>
