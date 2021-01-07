@@ -6,21 +6,20 @@
     <title>Clean JavaScript</title>
   </head>
   <body>
-    <ul id="array-rendering"></ul>
 
+    <div id="app">
+      <ul id="notes"></ul>
+    </div>
+    
     <script>
-      let items = [
-        { message: "Omsk" },
-        { message: "Moscow" },
-        { message: "Saint Petersburg" },
-      ];
+      let notes = ["Omsk", "Moscow", "Saint Petersburg"];
 
-      for (i in items) {
+      for (i in notes) {
         var li = document.createElement("LI");
-        var node = document.createTextNode(items[i].message);
-        li.appendChild(node);
-        document.getElementById("array-rendering").appendChild(li);
+        li.appendChild(document.createTextNode(notes[i]));
+        document.getElementById("notes").appendChild(li);
       }
     </script>
+    
   </body>
 </html>
