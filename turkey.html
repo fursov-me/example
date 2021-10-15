@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turkey — randomaizer</title>
+  </head>
+  <body>
+    Random result:
+    <div id="result"></div>
+    <br />
+    Hotels:
+    <ul id="hotelsList"></ul>
+    <script>
+      let hotels = [
+        [0, "Sensitive Premium Resort & Spa", "sensitive-premium-resortspa"],
+        [0, "Belek Soho Beach Club", "belek-soho-beach-club"],
+        [0, "Dream World Palace", "dream-world-palace"],
+        [0, "Lykia World & Links Golf", "lykia-worldlinks-golf"],
+        [0, "The Xanthe Resort & Spa", "the-xanthe-resortspa"],
+        [0, "Arnor De Luxe Hotel & Spa", "arnor-de-luxe-hotelspa"],
+        [1, "Orange County Resort Hotel Kemer - Ultra All Inclusive", "42667"],
+        [
+          0,
+          "Rubi Platinum Spa Resort&suites",
+          "rubi-platinum-spa-resortsuites",
+        ],
+      ];
+
+      let tour = [
+        ["https://www.anextour.com/tours/turkey/"],
+        ["https://www.tez-tour.com/hotel.html?id="],
+      ];
+
+      let hotel = hotels[Math.floor(Math.random() * hotels.length)];
+
+      let url = document.createElement("a");
+      url.appendChild(document.createTextNode(hotel[1]));
+      if (hotel[2] != undefined) {
+        url.target = "_blank";
+        url.href = hotel[0] == 0 ? tour[0] + hotel[2] : tour[1] + hotel[2];
+      }
+      document.querySelector("#result").appendChild(url);
+
+      let hotelsList = document.getElementById("hotelsList");
+
+      hotels.forEach((hotel) => {
+        let li = document.createElement("li");
+
+        let urls = document.createElement("a");
+        urls.appendChild(document.createTextNode(hotel[1]));
+        urls.target = "_blank";
+        urls.href = hotel[0] == 0 ? tour[0] + hotel[2] : tour[1] + hotel[2];
+
+        hotelsList.appendChild(li);
+        li.appendChild(urls);
+      });
+    </script>
+  </body>
+</html>
