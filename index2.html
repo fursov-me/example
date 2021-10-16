@@ -6,20 +6,18 @@
     <title>Clean JavaScript</title>
   </head>
   <body>
-
     <div id="app">
       <ul id="notes"></ul>
     </div>
-    
+
     <script>
       let notes = ["Omsk", "Moscow", "Saint Petersburg"];
 
-      for (i in notes) {
+      notes.forEach((city) => {
         var li = document.createElement("LI");
-        li.appendChild(document.createTextNode(notes[i]));
+        li.appendChild(document.createTextNode(city));
         document.getElementById("notes").appendChild(li);
-      }
+      });
     </script>
-    
   </body>
 </html>
